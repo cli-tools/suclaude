@@ -2,7 +2,7 @@
 
 Run [Claude Code](https://docs.anthropic.com/en/docs/claude-code) as root with `--dangerously-skip-permissions`.
 
-Claude Code refuses to use `--dangerously-skip-permissions` when running as root. `suclaude` bypasses this check by injecting a tiny `LD_PRELOAD` shim that makes `getuid()` and `geteuid()` return 1000, while the process keeps full root privileges.
+Claude Code refuses to use `--dangerously-skip-permissions` when running as root. `suclaude` bypasses this check by injecting a tiny `LD_PRELOAD` shim that makes `getuid()` and `geteuid()` return 1000, while the process keeps full root privileges. It also intercepts `getpwuid()` so that tools like `ssh` and `whoami` can resolve uid 1000 back to a valid passwd entry.
 
 ## Installation
 
