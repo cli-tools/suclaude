@@ -10,7 +10,7 @@ CFLAGS  ?= -O2 -Wall
 all: fakeuid.so
 
 fakeuid.so: fakeuid.c
-	$(CC) $(CFLAGS) -shared -nostartfiles -o $@ $<
+	$(CC) $(CFLAGS) -shared -fPIC -o $@ $<
 
 install: fakeuid.so
 	install -d $(BINDIR) $(LIBDIR)
